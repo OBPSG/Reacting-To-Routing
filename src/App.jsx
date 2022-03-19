@@ -4,7 +4,41 @@ import FilmEntry from "./components/FilmEntry.jsx";
 
 const App = () => {
     const [films, setFilms] = React.useState([]);
+    const [people, setPeople] = React.useState([]);
+    const [showFilms, setShowFilms] = React.useState(false);
+    const [showPeople, setShowPeople] = React.useState(false);
 
+    //function that handles the conditional rendering logic using the showFilms/People state variables
+    const renderingSwitch = () =>
+    {
+        if(showFilms)
+        {
+            return films.map((film) => {
+                return <FilmEntry
+                key = {film.id}
+                movieBanner={film.movie_banner}
+                movieTitle = {film.title}
+                description = {film.description}>    
+                </FilmEntry>
+                
+                })
+        }
+        if(showPeople)
+                return (<h1>*Placeholder for the people list*</h1>);
+    }
+
+    const handleFilmsButtonClick = () => {
+        setShowFilms(true);
+        setShowPeople(false);
+    }
+
+    const HandlePeopleButtonClick = () => {
+        setShowPeople(true);
+        setShowFilms(false);
+    }
+
+
+    //Retrieive both films and people info from their respective endpoints when the page first loads
     useEffect(() => {
         fetch("https://ghibliapi.herokuapp.com/films")
         .then(response => {
@@ -14,6 +48,16 @@ const App = () => {
         { //console.log(films)
             setFilms(films);
         });
+
+        fetch("https://ghibliapi.herokuapp.com/people")
+        .then(response => {
+            return response.json();
+        })
+        .then(people => {
+            setPeople(people);
+        })
+
+
     }, []);
 
     return(
@@ -23,14 +67,14 @@ const App = () => {
             </div>
             
             <h1 className="text-center">Studio Ghibli Films And People</h1>
-            <div class="row">
-                {films.map((film) => {
-                return <FilmEntry movieBanner={film.movie_banner}
-                movieTitle = {film.title}
-                description = {film.description}>    
-                </FilmEntry>
-                
-                })}
+
+            <div className="d-flex justify-content-around">
+                <button className="btn btn-primary" onClick={handleFilmsButtonClick}>Show Films</button>
+                <button className="btn btn-primary" onClick={HandlePeopleButtonClick}>Show People</button>
+            </div>
+            
+            <div className="row justify-content-between">
+                {renderingSwitch()}
             </div>
             
         </div>
