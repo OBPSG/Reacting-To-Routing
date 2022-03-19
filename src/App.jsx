@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import FilmEntry from "./components/FilmEntry.jsx";
+import PersonEntry from "./components/PersonEntry.jsx";
 
 const App = () => {
     const [films, setFilms] = React.useState([]);
@@ -24,7 +25,18 @@ const App = () => {
                 })
         }
         if(showPeople)
-                return (<h1>*Placeholder for the people list*</h1>);
+        //return (<h1>*Placeholder for the people list*</h1>);
+        {
+            return people.map(person => {
+                return <PersonEntry
+                    key = {person.id}
+                    name = {person.name}
+                    age = {person.age}
+                    gender = {person.gender}
+                    link = {person.url}>
+                </PersonEntry>
+            })
+        }
     }
 
     const handleFilmsButtonClick = () => {
@@ -32,7 +44,7 @@ const App = () => {
         setShowPeople(false);
     }
 
-    const HandlePeopleButtonClick = () => {
+    const handlePeopleButtonClick = () => {
         setShowPeople(true);
         setShowFilms(false);
     }
@@ -57,7 +69,6 @@ const App = () => {
             setPeople(people);
         })
 
-
     }, []);
 
     return(
@@ -70,7 +81,7 @@ const App = () => {
 
             <div className="d-flex justify-content-around">
                 <button className="btn btn-primary" onClick={handleFilmsButtonClick}>Show Films</button>
-                <button className="btn btn-primary" onClick={HandlePeopleButtonClick}>Show People</button>
+                <button className="btn btn-primary" onClick={handlePeopleButtonClick}>Show People</button>
             </div>
             
             <div className="row justify-content-between">
