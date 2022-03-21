@@ -59,7 +59,8 @@ const App = () => {
         .then((films) =>
         { //console.log(films)
             setFilms(films);
-        });
+        })
+        .catch(error => console.log(error));
 
         fetch("https://ghibliapi.herokuapp.com/people")
         .then(response => {
@@ -68,6 +69,9 @@ const App = () => {
         .then(people => {
             setPeople(people);
         })
+        .catch(error => {
+            console.log(error)
+        });
 
     }, []);
 
