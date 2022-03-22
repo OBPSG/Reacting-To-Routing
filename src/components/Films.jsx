@@ -16,15 +16,22 @@ const Films = () => {
             .catch(error => console.log(error));
     }, []);
 
-    return films.map((film) => {
-        return (
-                <FilmEntry
-                    key={film?.id}
-                    movieBanner={film?.movie_banner}
-                    movieTitle={film?.title}
-                    description={film?.description}>
-                </FilmEntry>
-        );});
+    return (
+        <>
+            <div className="row">
+                {films.map((film) => {
+                    return (
+                        <FilmEntry
+                            key={film?.id}
+                            movieBanner={film?.movie_banner}
+                            movieTitle={film?.title}
+                            description={film?.description}>
+                        </FilmEntry>
+                    )
+                })}
+            </div>
+        </>
+    )
 }
 
 export default Films;

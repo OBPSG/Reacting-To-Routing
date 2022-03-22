@@ -12,19 +12,19 @@ import PersonDetails from './components/PersonDetails';
 
 const App = () => {
 
-    return(
+    return (
         <>
             <BrowserRouter>
-                <NavBar/>
+                <NavBar />
                 <div>
                     <Routes>
-                        <Route path="/" element={<Home />}/>
-                        <Route path="/films" element={<Films/>}/>
-                        <Route path="/people/:personID" element={<PersonDetails/>}></Route>
-                        <Route path="/people" element={<People/>}/>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/films" element={<Films />} />
+                        <Route path="/people/:personID" element={<PersonDetails />}></Route>
+                        <Route path="/people" element={<People />} />
                     </Routes>
                 </div>
-            </BrowserRouter>      
+            </BrowserRouter>
         </>
     );
 }

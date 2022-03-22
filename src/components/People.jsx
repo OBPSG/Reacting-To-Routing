@@ -23,17 +23,19 @@ const People = () => {
 
 
     return (
-        <> 
-        {people.map(person => {
-            return <PersonEntry
-                key={person?.id}
-                id={person?.id}
-                name={person?.name}
-                age={person?.age}
-                gender={person?.gender}
-                link={person?.url}>
-            </PersonEntry>
-        })}
+        <>
+            <div className="row">
+                {people.map(person => {
+                    return <PersonEntry
+                        key={person?.id}
+                        id={person?.id}
+                        name={person?.name}
+                        age={person?.age}
+                        gender={person?.gender}
+                        link={person?.url}>
+                    </PersonEntry>
+                })}
+            </div>
         </>
     )
 }
