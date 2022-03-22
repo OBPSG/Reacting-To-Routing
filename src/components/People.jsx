@@ -27,6 +27,7 @@ const People = () => {
         {people.map(person => {
             return <PersonEntry
                 key={person?.id}
+                id={person?.id}
                 name={person?.name}
                 age={person?.age}
                 gender={person?.gender}

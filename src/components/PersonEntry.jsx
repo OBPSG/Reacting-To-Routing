@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 const PersonEntry = (props) => {
     return (
@@ -6,7 +7,7 @@ const PersonEntry = (props) => {
         <h1 className="card-title text-center">{props.name}</h1>
         <h2 className="text-center">Age: {props.age}</h2>
         <h2 className="text-center">Gender: {props.gender}</h2>
-        <div className="d-flex justify-content-center"><a href={props.link} target="blank" className="btn btn-secondary w-25 m-2">See Details</a></div>
+        <div className="d-flex justify-content-center"><Link to={`/people/${props.id}`} className="btn btn-secondary w-25 m-2">See Details</Link></div>
         
     </div>
     );}
