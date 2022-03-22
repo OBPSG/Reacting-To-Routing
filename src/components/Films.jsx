@@ -23,6 +23,7 @@ const Films = () => {
                     return (
                         <FilmEntry
                             key={film?.id}
+                            id={film?.id}
                             movieBanner={film?.movie_banner}
                             movieTitle={film?.title}
                             description={film?.description}>
