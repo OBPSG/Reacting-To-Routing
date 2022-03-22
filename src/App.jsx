@@ -9,6 +9,7 @@ import FilmDetails from "./components/FilmDetails.jsx";
 import PersonEntry from "./components/PersonEntry.jsx";
 import People from './components/People.jsx';
 import PersonDetails from './components/PersonDetails';
+import Vehicles from "./components/Vehicles";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
                         <Route path="/films" element={<Films />} />
                         <Route path="/people/:personID" element={<PersonDetails />}></Route>
                         <Route path="/people" element={<People />} />
+                        <Route path="/vehicles" element={<Vehicles />} />
                     </Routes>
                 </div>
             </BrowserRouter>
